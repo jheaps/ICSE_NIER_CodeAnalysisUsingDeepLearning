@@ -2,4 +2,7 @@
 
 We plan to evaluate the effectiveness of using deep learning techniques on source code by performing an analysis on data sets.
 
-%TODO: Xiaoyin, can you help me with this section. I know we discussed it during the meeting, but I'm having a hard time trying to describe what we talked about.
+The substantial number of Android apps in the Google Play store and open source software repositories provide us with a large dataset for mining of identifier similarities, training classification model, and evaluation. The major challenge is to obtain ground truth of privacy-related code elements for both training and evaluation purposes. As mentioned earlier, we plan to use most explicit privacy-related code elements for training purposes. For evaluation, besides manual confirmation of the results, we plan to further execute the app and track the flow of privacy data (both from user inputs and Android APIs) with taints, so that we can confirm whether a variable holds privacy data or a method processes privacy data at runtime.
+
+It is also important to evaluate whether our mappings are useful for developers. We will implement our approach as a plug-in of Android Studio plugin which recommends privacy-related facts to developers. With training materials on how to handle each type of privacy code entities, we can further help developer find potential bad coding practices regarding privacy. We plan to evaluate the usability of the plugin with human developer subjects, and apply our plugin to open source Android projects and report potential privacy-related coding issues to developers.
+	
