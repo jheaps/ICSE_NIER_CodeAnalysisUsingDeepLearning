@@ -1,3 +1,18 @@
 \section{Background}
 
-GloVe (Gloval Vectors for word representation)~\cite{pennington2014glove} and Skip-gram~\cite{mikolov2013efficient} are the two most popular word embedding learning models.
+This section contains background information necessary on which our approach is based.
+
+\subsection{Word Embeddings}
+
+In natural language processing, word embeddings are used to represent the semantic meaning of word. A word embedding is an $n$-dimensional vector that gives a distributed representation of a word with each vector dimension representing some semantic feature of the word. Words with similar semantic meaning will be clustered together in the vector space since similar words will be used in similar context~\cite{mikolov2013distributed}.
+
+GloVe (Gloval Vectors for word representation)~\cite{pennington2014glove} and Skip-gram~\cite{mikolov2013efficient} are the two most popular word embedding learning models. Both operate on the same fundamental idea that the basic semantic meaning of a word can be represented by utilizing surrounding words as semantic context. GloVe uses a co-occurance matrix of all the words in a corpus. When the matrix has been filled with all word co-occurances, matrix factorization is performed to produce the vector values of each word's embedding. Skip-gram defines a window size that indicates the number of surrounding words to use as context. A given word's vector values are updated by using its context as input to a neural network.
+
+After a corpus has been input to either of these algorithms and all words have been processed, the resulting word embeddings should have grouped similar words together in the vector space. That is, the closer two words are to each other, the more similar their semantic meaning is. We propose to use a modified version of the skip-gram model to peform obtain word embeddings for words in source code.
+ 
+\subsection{Recurrent Neural Networks}
+
+%TODO: may need to include a figure
+%TODO: find a citation for RNNs (place at end of first sentence)
+
+Recurrent Neural Networks (RNNs) are a neural network that processes sequences of information in steps. For each step in an RNN, new input is processed with the input that came before it. That is, for step $t$ the new input $x_t$ is passed to the hidden state, $h_t$, of step $t$. $h_t$ then uses $x_t$ and the output of the previous step $o_{t-1}$ to calculate the current output using the function $Vx_t + Wo_{t-1}$. The result is then usually transformed using a nonlinear function $f$, such as $tanh$. So, the final calculation for the hidden layer (and the output of that layer) is $o_t = h_t = f(Vx_t + Wo_{t-1})$. This output is then used in the next step's calculation with the next input, $x_{t+1}$. The steps continue until all input has been consumed and the final output is usually transformed by a softmax classifier to determine the classification (or final analysis) of the input.
