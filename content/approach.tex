@@ -19,7 +19,10 @@ To modify skip-gram, we will need to separate ``key words'' (which includes key 
 A constructed word's embedding will be use context in two separate ways. The first, and most important, is that word's definition. When a constructed word is defined, the entire definition is used as context to the skip-gram model. For example, for a Java class everything in the entire class is used as context; for a function, the function signature and entire definition will be used as context; for a variable, any assignment performed on it will be used as context. The second type of context will come from the constructed word's usage in code. In this case, Word2Vec will be used normally with a window size to capture code surrounding the word as context.
 
 \begin{figure}
+   \centering
    \includegraphics[scale=.32]{figures/deeplearningflow.png}
+   \caption{Flow of Deep Learning Analysis}
+   \label{deeplearningflow}
 \end{figure}
 
 \subsection{Deep Learning}
