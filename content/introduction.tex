@@ -11,4 +11,11 @@ Therefore, a technique that can construct mapping from code elements to high-lev
 The novel intuition behind our approach is that, given a high-level concept, similar to its textual context (i.e., texts surrounding a keywords / phrase representing the concept), its code context (i.e., code elements surrounding a variable / method representing the concept) also contains a relationship between it and its relevant concepts. For example, an assignment $a = b$ indicates that the concept represented by $b$ is a sub-concept of the concept represented by $a$, and an assignment $a = b[i]$ indicates that the concept represented by $b$ is a collection, and its element is a sub-concept of $a$. With all these relations from context, we can gradually narrow down the possible concepts a code element can represent by comparing a concept's textual context with its code context. In our approach, we use Word2Vec~\cite{mikolov2013efficient} and deep learning to represent the code / textual context of a concept, as described in detail in Section~\ref{approach}.
 
 
+\textbf{Motivation Example.} Figure~\ref{example} presents an example for computation and clustering features. A user input is first checked with PhoneNumberUtils.isGlobalPhoneNumber(), and then processed by PhoneNumberUtils.parse().getCountryCode(). Both API methods are mainly used for processing phone numbers, so with them as computer features, we can predict the user input as a phone number even if it does not have a meaningful identifier. Later, this phone number flows to a field called pNumber in class Profile. From the other fields defined in the class (e.g., address) also indicates that this field may be a phone number as they are all components of contact information. From the defined fields, we can also infer that the field zCode should be zip code.
 
+\begin{figure*}
+	\centering
+	\includegraphics[width=\textwidth]{figures/example_computationOld.png}
+	\caption{An Example of Code Context}
+	\label{example}
+\end{figure*}
